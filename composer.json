@@ -1,5 +1,5 @@
 {
-    "name": "macropage/ebay-sdk-speed4trade-api",
+    "name": "macropage/sdk-php-speed4trade",
     "require": {
         "php": "^8.2",
         "phpro/soap-client": "^2.3",
