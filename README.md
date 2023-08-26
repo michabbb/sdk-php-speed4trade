@@ -1,6 +1,10 @@
 # sdk-php-speed4trade
 A SOAP PHP SDK to use with the Speed4Trade Soap API
 
+# Installation
+
+`composer require macropage/sdk-php-speed4trade`
+
 # How to use it
 
 ```php

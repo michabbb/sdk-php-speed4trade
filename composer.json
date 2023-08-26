@@ -13,5 +13,6 @@
     },
     "autoload": {
         "classmap": ["src/"]
-    }
+    },
+    "minimum-stability": "dev"
 }
