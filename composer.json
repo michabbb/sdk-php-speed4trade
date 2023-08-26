@@ -1,5 +1,19 @@
 {
     "name": "macropage/sdk-php-speed4trade",
+    "keywords": [
+        "macropage",
+        "sdk",
+        "speed4trade"
+    ],
+    "homepage": "https://github.com/michabbb/sdk-php-speed4trade-",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Micha(el) Bladowski",
+            "email": "info@macropage.de",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": "^8.2",
         "phpro/soap-client": "^2.3",
