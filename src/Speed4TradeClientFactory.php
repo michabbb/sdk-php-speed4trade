@@ -5,11 +5,13 @@ namespace macropage\SDKs\speed4trade;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Http\Client\Common\Plugin\AuthenticationPlugin;
+use Http\Client\Common\Plugin\LoggerPlugin;
 use Http\Client\Common\PluginClient;
 use Http\Message\Authentication\BasicAuth;
 use Phpro\SoapClient\Caller\EngineCaller;
 use Phpro\SoapClient\Caller\EventDispatchingCaller;
 use Phpro\SoapClient\Soap\DefaultEngineFactory;
+use Psr\Log\LoggerInterface;
 use Soap\ExtSoapEngine\ExtSoapOptions;
 use Soap\Psr18Transport\Psr18Transport;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -17,13 +19,17 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 class Speed4TradeClientFactory
 {
     public static function factory(
-        string $wsdl,
-        array  $proxies = [],
-        bool   $verify = false,
-        string $username = '',
-        string $password = ''
+        string          $wsdl,
+        array           $proxies = [],
+        bool            $verify = false,
+        string          $username = '',
+        string          $password = '',
+        LoggerInterface $logger = null
     ): Speed4TradeClient
     {
+
+        $loggerPlugin = new LoggerPlugin($logger);
+
         $transport = Psr18Transport::createForClient(
             new PluginClient(
                 new Client([
@@ -32,6 +38,7 @@ class Speed4TradeClientFactory
                            ]),
                 [
                     new AuthenticationPlugin(new BasicAuth($username, $password)),
+                    $loggerPlugin,
                 ]
             )
         );
