@@ -22,6 +22,7 @@ $client = Speed4TradeClientFactory::factory(
     ],
     username: '.......',
     password: '.......'
+    logger:   new \Psr\Log\NullLogger()
 );
 $request = new FetchMandators('<request method="fetchMandators" version="1.0.0"></request>');
 $return = $client->fetchMandators($request);
